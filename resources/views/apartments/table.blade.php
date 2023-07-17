@@ -1,9 +1,9 @@
 <tr class="intro-x">
-    <div id="faq-accordion-1" class="accordion">
+    <div id="faq-accordion-1" class="accordion accordion-boxed">
         @foreach(array_unique($appartments->pluck('floor')->toArray()) as $key => $floor)
-            <div class="accordion-item">
+            <div class="accordion-item box">
                 <div id="faq-accordion-content-1" class="accordion-header">
-                    <button class="accordion-button" type="button" data-tw-toggle="collapse"
+                    <button class="accordion-button {{ $key !== 0 ? "collapsed" : "" }}" type="button" data-tw-toggle="collapse"
                             data-tw-target="#faq-accordion-collapse-{{ $floor }}" aria-expanded="true"
                             aria-controls="faq-accordion-collapse-{{ $floor }}"> {{ $floor }} - Этаж
                     </button>
@@ -13,8 +13,9 @@
                      aria-labelledby="faq-accordion-content-{{ $floor }}"
                      data-tw-parent="#faq-accordion-1">
                     <div class="accordion-body text-slate-600 dark:text-slate-500 leading-relaxed">
+                        <table class="table table-report my-auto">
                         @foreach($appartments->where('floor', $floor) as $appartment)
-                            <tr class="intro-x box">
+                            <tr class="intro-x box {{ $appartment->status === 'active' ? 'alert-success' : $appartment->status === 'hold' ? 'alert-success' : 'alert-success' }}">
                                 <td class="text-center">{{ $appartment->number }}</td>
                                 <td class="text-center">{{ $appartment->rooms }}</td>
                                 <td class="text-center">{{ $appartment->floor  }}</td>
@@ -56,6 +57,7 @@
                                 </td>
                             </tr>
                         @endforeach
+                        </table>
                     </div>
                 </div>
             </div>
