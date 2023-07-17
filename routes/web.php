@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApartmentsController;
 use App\Http\Controllers\DairyController;
+use App\Http\Controllers\ParkingController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -15,6 +16,10 @@ Route::group(['prefix'=>'dairy'], function (){
 Route::group(['prefix'=>'apartments'], function (){
     Route::get('/', [ApartmentsController::class, 'index'])->name('apartments');
     Route::get('/search', [ApartmentsController::class, 'search'])->name('apartments.search');
+});
+
+Route::group(['prefix'=>'parkings'], function () {
+    Route::get('/',[ParkingController::class, 'index'])->name('parking');
 });
 
 Route::group(['prefix'=>'clients'], function (){

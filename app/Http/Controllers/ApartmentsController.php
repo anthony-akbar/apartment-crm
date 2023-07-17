@@ -16,24 +16,13 @@ class ApartmentsController extends Controller
 
     public function search() {
         $request = request()->all()['data'];
-        $notNullRequest = array_filter($request);
-
-//        dd($notNullRequest);
-
-        $query = "SELECT * FROM appartments";
-
-        if (count($notNullRequest)) { // not empty
-            $query .= " WHERE";
-
-            foreach($notNullRequest as $key => $value)
-            {
-                $query .= " $key = '$value' AND";
-            }
+        $query = [];
+        foreach ($request as $key =>$item) {
+         if($item){
+             $query[] = [$key , $item];
+         }
         }
-        $query = substr($query, 0, -4);
-        $query .= ";";
-
-        $appartments = DB::select($query);
+        $appartments = Appartment::where($query)->get();
         return view('apartments.table', compact('appartments'));
 
     }
