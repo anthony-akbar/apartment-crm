@@ -11,7 +11,10 @@
             </a>
         </li>
         <li>
-            <a href="javascript:;.html" class="side-menu side-menu--active">
+            <a href="javascript:;.html"
+               class="side-menu {{ request()->is("commercial") || request()->is('/commercial/*') ||
+                                    request()->is("apartments") || request()->is('/apartments/*') ||
+                                    request()->is("parking") || request()->is('/parking/*') ? "side-menu--active" : "" }}">
                 <div class="side-menu__icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -22,7 +25,9 @@
                 </div>
                 <div class="side-menu__title">
                     Объекты
-                    <div class="side-menu__sub-icon transform rotate-180">
+                    <div class="side-menu__sub-icon {{ request()->is("commercial") || request()->is('/commercial/*') ||
+                                    request()->is("apartments") || request()->is('/apartments/*') ||
+                                    request()->is("parking") || request()->is('/parking/*') ? "transform rotate-180" : "" }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                              icon-name="chevron-down" data-lucide="chevron-down" class="lucide lucide-chevron-down">
@@ -31,9 +36,12 @@
                     </div>
                 </div>
             </a>
-            <ul class="side-menu__sub-open">
+            <ul class="{{ request()->is("commercial") || request()->is('/commercial/*') ||
+                                    request()->is("apartments") || request()->is('/apartments/*') ||
+                                    request()->is("parking") || request()->is('/parking/*') ? "side-menu__sub-open" : "" }}">
                 <li>
-                    <a href="side-menu-light-dashboard-overview-1.html" class="side-menu">
+                    <a href="{{ route('apartments') }}"
+                       class="side-menu side-menu{{ request()->is("apartments") || request()->is('/apartments/*') ? "--active" : "" }}">
                         <div class="side-menu__icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -46,7 +54,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="side-menu-light-dashboard-overview-2.html" class="side-menu">
+                    <a href="side-menu-light-dashboard-overview-2.html"
+                       class="side-menu side-menu{{ request()->is("parking") || request()->is('/parking/*') ? "--active" : "" }}">
                         <div class="side-menu__icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -59,7 +68,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="side-menu-light-dashboard-overview-3.html" class="side-menu">
+                    <a href="side-menu-light-dashboard-overview-3.html"
+                       class="side-menu side-menu{{ request()->is("commercial") || request()->is('/commercial/*') ? "--active" : "" }}">
                         <div class="side-menu__icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -72,15 +82,6 @@
                     </a>
                 </li>
             </ul>
-        </li>
-        <li>
-            <a href="{{ route('apartments') }}"
-               class="side-menu side-menu{{ request()->is("apartments") || request()->is('/apartments/*') ? "--active" : "" }}">
-                <div class="side-menu__icon">
-                    <i data-lucide="home"></i>
-                </div>
-                <div class="side-menu__title">Квартиры</div>
-            </a>
         </li>
         <li>
             <a href="{{ route('dairy') }}" class="side-menu side-menu{{ request()->is("dairy") ? "--active" : "" }}">

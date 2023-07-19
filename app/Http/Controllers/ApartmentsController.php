@@ -16,7 +16,7 @@ class ApartmentsController extends Controller
 
     public function search() {
         $request = request()->all()['data'];
-        $appartments = Appartment::where($request)->get();
+        $appartments = $request ? Appartment::where($request)->get() : Appartment::all();
         return view('apartments.table', compact('appartments'));
 
     }

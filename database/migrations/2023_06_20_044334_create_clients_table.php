@@ -17,10 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->date('birth');
-            $table->string('passport');
+            $table->string('passportId');
             $table->date('given');
             $table->string('address');
             $table->string('phone');
+            $table->string('status');
             $table->unsignedBigInteger('pin');
             $table->string('email')->nullable();
             $table->timestamps();
