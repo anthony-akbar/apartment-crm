@@ -103,13 +103,13 @@
                 <div class="side-menu__title">Сейф</div>
             </a>
         </li>
-        {{--<li>
-            <a href="" class="side-menu">
-                <div class="side-menu__icon"><i class="bi bi-tools" style="font-size: 23px"></i></div>
-                <div class="side-menu__title"> Services</div>
+        <li>
+            <a href="{{ route('contracts') }}" class="side-menu side-menu{{ request()->is("contracts") || request()->is("contracts/*") ? "--active" : "" }}">
+                <div class="side-menu__icon"><i data-lucide="clipboard"></i></div>
+                <div class="side-menu__title">Договора</div>
             </a>
         </li>
-        <li>
+        {{--<li>
             <a href="side-menu-light-inbox.html" class="side-menu">
                 <div class="side-menu__icon"><i data-lucide="inbox"></i></div>
                 <div class="side-menu__title"> Clients</div>

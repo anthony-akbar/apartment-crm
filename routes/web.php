@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApartmentsController;
+use App\Http\Controllers\ContractController;
 use App\Http\Controllers\DairyController;
 use App\Http\Controllers\ParkingController;
 use Illuminate\Support\Facades\Route;
@@ -24,10 +25,16 @@ Route::group(['prefix'=>'parkings'], function () {
 
 Route::group(['prefix'=>'clients'], function (){
 Route::get('/', [\App\Http\Controllers\ClientController::class, 'index'])->name('clients');
+Route::get('/create', [\App\Http\Controllers\ClientController::class, 'create'])->name('clients.create');
+Route::post('/store', [\App\Http\Controllers\ClientController::class, 'store'])->name('clients.store');
 });
 Route::controller(DairyController::class)->group(function(){
     Route::get('dairies-export', 'export')->name('dairies.export');
     Route::get('/search', [DairyController::class, 'search'])->name('dairy.search');
+});
+Route::group(['prefix'=>'contracts'], function (){
+   Route::get('/', [ContractController::class, 'index'])->name('contracts');
+   Route::get('/create', [ContractController::class, 'create'])->name('contracts.create');
 });
 
 
@@ -35,8 +42,15 @@ Route::controller(DairyController::class)->group(function(){
 
 Route::group(['prefix'=>'test'], function (){
     Route::get('/', function (){
-        dd(strtotime('19 May, 2023 - 19 Jun, 2023'));
-        dd(date("Y-m-d",));
+
+        $clients = \App\Models\Client::all();
+        foreach ($clients as $client) {
+
+            dump(strtotime($client->birth));
+            dump(date("Y-m-d", strtotime($client->birth)));
+            dd($client);
+        }
+
     });
     Route::group(['prefix'=>'{block}'], function (){
         Route::group(['prefix'=>'{kv}'], function () {
