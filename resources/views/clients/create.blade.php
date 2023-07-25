@@ -26,14 +26,14 @@
             </div>
 
             <div class="mt-3">
-                <div class="grid grid-cols-8 gap-2">
-                    <label for="gender" class="grid-cols-3 grid form-label my-auto">Пол</label>
-                    <select name="gender" id="gender" data-placeholder="Select your favorite actors"
-                            class="w-72 tom-select w-full">
+                <div class="grid grid-cols-12 gap-2">
+                    <label for="gender" class="md:col-span-2 grid form-label my-auto">Пол</label>
+                    <select name="gender" id="gender"
+                            class="md:col-span-2 tom-select">
                         <option value="Мужской">Мужcкой</option>
                         <option value="Женский">Женский</option>
                     </select>
-                    <label for="birth" class="grid-cols-2 form-label my-auto mx-auto">Дата рождения</label>
+                    <label for="birth" class="md:col-span-2 form-label my-auto mx-auto">Дата рождения</label>
                     <div class="relative w-56 mx-auto">
                         <div
                             class="absolute rounded-l w-10 h-full flex items-center justify-center bg-slate-100 border text-slate-500 dark:bg-darkmode-700 dark:border-darkmode-800 dark:text-slate-400">

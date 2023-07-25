@@ -20,4 +20,10 @@ class ClientController extends Controller
         dd($request->all());
         return redirect()->route('clients.index');
     }
+
+    public function search(Request $request) {
+        $data = $request->all()['data'];
+        $clients = Client::where($data)->get();
+        return view('contracts.apartments.client-tooltip', compact('clients'));
+    }
 }

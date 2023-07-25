@@ -86,7 +86,6 @@
                     'data': array.length !== 0 ? array : null
                 },
                 success: (data) => {
-                    console.log(data)
                     let table = document.getElementById('accordtable')
                     table.innerHTML = data
                 }
