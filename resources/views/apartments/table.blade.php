@@ -15,7 +15,7 @@
                     <div class="accordion-body text-slate-600 dark:text-slate-500 leading-relaxed">
                         <table class="table table-report my-auto">
                             @foreach($appartments->where('floor', $floor) as $appartment)
-                                <tr class="intro-x box {{ $appartment->status === 'active' ? 'alert-success' : $appartment->status === 'hold' ? 'alert-success' : 'alert-success' }}">
+                                <tr class="intro-x box">
                                     <td class="text-center   w-20">{{ $appartment->number }}</td>
                                     <td class="text-center   w-32">{{ $appartment->rooms }}</td>
                                     <td class="text-center   w-40">{{ $appartment->floor  }}</td>
